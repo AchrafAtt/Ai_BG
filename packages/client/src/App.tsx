@@ -2,16 +2,22 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Button } from './components/ui/button'
 
 function App() {
   const [message, setMessage] = useState()
   useEffect(() => {
-    fetch('http://localhost:3000/test')
+    fetch('/api/hello')
       .then((res) => res.json())
       .then((data) => setMessage(data.message))
   }, [])
 
-  return <p>{message}</p>
+  return(
+    <div className='p-4'>
+       <p className='font-bold text-amber-300  text-3xl'>{message}</p>
+       <Button>Click me</Button>
+    </div>
+  )
 }
 
 export default App
